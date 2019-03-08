@@ -4,6 +4,19 @@
 #include <IOKit/storage/IOMedia.h>
 #include <IOKit/IOBSD.h>
 
+enum { MAX_DISK_NAME = 100 };
+
+typedef struct
+{
+    char DiskName[MAX_DISK_NAME];
+    int64_t Reads;
+    int64_t Writes;
+    int64_t ReadBytes;
+    int64_t WriteBytes;
+    int64_t ReadTime;
+    int64_t WriteTime;
+} DiskInfo;
+
 // The iterator of all things disk. Allocated by StartIOCounterFetch, released
 // by EndIOCounterFetch.
 static io_iterator_t diskIter;
